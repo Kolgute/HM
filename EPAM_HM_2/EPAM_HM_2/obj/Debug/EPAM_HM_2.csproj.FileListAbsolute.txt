@@ -1,0 +1,7 @@
+C:\Users\sss\source\repos\EPAM_HM_2\EPAM_HM_2\bin\Debug\EPAM_HM_2.exe.config
+C:\Users\sss\source\repos\EPAM_HM_2\EPAM_HM_2\bin\Debug\EPAM_HM_2.exe
+C:\Users\sss\source\repos\EPAM_HM_2\EPAM_HM_2\bin\Debug\EPAM_HM_2.pdb
+C:\Users\sss\source\repos\EPAM_HM_2\EPAM_HM_2\obj\Debug\EPAM_HM_2.csprojAssemblyReference.cache
+C:\Users\sss\source\repos\EPAM_HM_2\EPAM_HM_2\obj\Debug\EPAM_HM_2.csproj.CoreCompileInputs.cache
+C:\Users\sss\source\repos\EPAM_HM_2\EPAM_HM_2\obj\Debug\EPAM_HM_2.exe
+C:\Users\sss\source\repos\EPAM_HM_2\EPAM_HM_2\obj\Debug\EPAM_HM_2.pdb
