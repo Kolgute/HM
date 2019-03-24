@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM_HM_Collection", "EPAM_HM_Collection\EPAM_HM_Collection.csproj", "{77A63059-CE23-4323-B748-0C22C9E7823A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM_HM_Collection_1", "EPAM_HM_Collection_1\EPAM_HM_Collection_1.csproj", "{CFF9D2F5-8A3F-4B90-AF50-C94BF226F7F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77A63059-CE23-4323-B748-0C22C9E7823A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77A63059-CE23-4323-B748-0C22C9E7823A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77A63059-CE23-4323-B748-0C22C9E7823A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77A63059-CE23-4323-B748-0C22C9E7823A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFF9D2F5-8A3F-4B90-AF50-C94BF226F7F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFF9D2F5-8A3F-4B90-AF50-C94BF226F7F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFF9D2F5-8A3F-4B90-AF50-C94BF226F7F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFF9D2F5-8A3F-4B90-AF50-C94BF226F7F5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {396A0CD0-F8DD-4722-BB5B-3683022EF576}
+	EndGlobalSection
+EndGlobal

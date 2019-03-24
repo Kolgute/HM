@@ -1,0 +1,7 @@
+C:\Users\sss\source\repos\EPAM_HM_Collection\EPAM_HM_Collection_1\bin\Debug\EPAM_HM_Collection_1.exe.config
+C:\Users\sss\source\repos\EPAM_HM_Collection\EPAM_HM_Collection_1\bin\Debug\EPAM_HM_Collection_1.exe
+C:\Users\sss\source\repos\EPAM_HM_Collection\EPAM_HM_Collection_1\bin\Debug\EPAM_HM_Collection_1.pdb
+C:\Users\sss\source\repos\EPAM_HM_Collection\EPAM_HM_Collection_1\obj\Debug\EPAM_HM_Collection_1.csprojAssemblyReference.cache
+C:\Users\sss\source\repos\EPAM_HM_Collection\EPAM_HM_Collection_1\obj\Debug\EPAM_HM_Collection_1.csproj.CoreCompileInputs.cache
+C:\Users\sss\source\repos\EPAM_HM_Collection\EPAM_HM_Collection_1\obj\Debug\EPAM_HM_Collection_1.exe
+C:\Users\sss\source\repos\EPAM_HM_Collection\EPAM_HM_Collection_1\obj\Debug\EPAM_HM_Collection_1.pdb
