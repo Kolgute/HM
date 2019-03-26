@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM_HM_COMPRESS", "EPAM_HM_COMPRESS\EPAM_HM_COMPRESS.csproj", "{515B7AE4-309B-4156-9F33-045FE229BCF5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{515B7AE4-309B-4156-9F33-045FE229BCF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{515B7AE4-309B-4156-9F33-045FE229BCF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{515B7AE4-309B-4156-9F33-045FE229BCF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{515B7AE4-309B-4156-9F33-045FE229BCF5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {42A858ED-E0F6-431E-B1A4-4FCA4B5DB61F}
+	EndGlobalSection
+EndGlobal

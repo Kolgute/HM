@@ -1,0 +1,7 @@
+C:\Users\sss\source\repos\EPAM_HM_COMPRESS\EPAM_HM_COMPRESS\bin\Debug\EPAM_HM_COMPRESS.exe.config
+C:\Users\sss\source\repos\EPAM_HM_COMPRESS\EPAM_HM_COMPRESS\bin\Debug\EPAM_HM_COMPRESS.exe
+C:\Users\sss\source\repos\EPAM_HM_COMPRESS\EPAM_HM_COMPRESS\bin\Debug\EPAM_HM_COMPRESS.pdb
+C:\Users\sss\source\repos\EPAM_HM_COMPRESS\EPAM_HM_COMPRESS\obj\Debug\EPAM_HM_COMPRESS.csprojAssemblyReference.cache
+C:\Users\sss\source\repos\EPAM_HM_COMPRESS\EPAM_HM_COMPRESS\obj\Debug\EPAM_HM_COMPRESS.csproj.CoreCompileInputs.cache
+C:\Users\sss\source\repos\EPAM_HM_COMPRESS\EPAM_HM_COMPRESS\obj\Debug\EPAM_HM_COMPRESS.exe
+C:\Users\sss\source\repos\EPAM_HM_COMPRESS\EPAM_HM_COMPRESS\obj\Debug\EPAM_HM_COMPRESS.pdb
