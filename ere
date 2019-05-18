@@ -1,0 +1,428 @@
+[33mcommit 5942ffea435cfda9e185bb56d72720299139ceb2[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Nikolay Kozlov <Kolgute@mail.ru>
+Date:   Tue Mar 26 21:20:37 2019 +0300
+
+    HM_Compress
+
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/.vs/EPAM_HM_COMPRESS/v15/.suo b/EPAM_HM_Compress/EPAM_HM_COMPRESS/.vs/EPAM_HM_COMPRESS/v15/.suo[m
+[1mnew file mode 100644[m
+[1mindex 0000000..9c27f9e[m
+Binary files /dev/null and b/EPAM_HM_Compress/EPAM_HM_COMPRESS/.vs/EPAM_HM_COMPRESS/v15/.suo differ
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/.vs/EPAM_HM_COMPRESS/v15/Server/sqlite3/storage.ide b/EPAM_HM_Compress/EPAM_HM_COMPRESS/.vs/EPAM_HM_COMPRESS/v15/Server/sqlite3/storage.ide[m
+[1mnew file mode 100644[m
+[1mindex 0000000..56758a8[m
+Binary files /dev/null and b/EPAM_HM_Compress/EPAM_HM_COMPRESS/.vs/EPAM_HM_COMPRESS/v15/Server/sqlite3/storage.ide differ
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/.vs/EPAM_HM_COMPRESS/v15/Server/sqlite3/storage.ide-shm b/EPAM_HM_Compress/EPAM_HM_COMPRESS/.vs/EPAM_HM_COMPRESS/v15/Server/sqlite3/storage.ide-shm[m
+[1mnew file mode 100644[m
+[1mindex 0000000..457c177[m
+Binary files /dev/null and b/EPAM_HM_Compress/EPAM_HM_COMPRESS/.vs/EPAM_HM_COMPRESS/v15/Server/sqlite3/storage.ide-shm differ
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/.vs/EPAM_HM_COMPRESS/v15/Server/sqlite3/storage.ide-wal b/EPAM_HM_Compress/EPAM_HM_COMPRESS/.vs/EPAM_HM_COMPRESS/v15/Server/sqlite3/storage.ide-wal[m
+[1mnew file mode 100644[m
+[1mindex 0000000..bceb61f[m
+Binary files /dev/null and b/EPAM_HM_Compress/EPAM_HM_COMPRESS/.vs/EPAM_HM_COMPRESS/v15/Server/sqlite3/storage.ide-wal differ
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS.sln b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS.sln[m
+[1mnew file mode 100644[m
+[1mindex 0000000..436f4e0[m
+[1m--- /dev/null[m
+[1m+++ b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS.sln[m
+[36m@@ -0,0 +1,25 @@[m
+[32m+[m[32mп»ї[m
+[32m+[m[32mMicrosoft Visual Studio Solution File, Format Version 12.00[m
+[32m+[m[32m# Visual Studio 15[m
+[32m+[m[32mVisualStudioVersion = 15.0.28010.2026[m
+[32m+[m[32mMinimumVisualStudioVersion = 10.0.40219.1[m
+[32m+[m[32mProject("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM_HM_COMPRESS", "EPAM_HM_COMPRESS\EPAM_HM_COMPRESS.csproj", "{515B7AE4-309B-4156-9F33-045FE229BCF5}"[m
+[32m+[m[32mEndProject[m
+[32m+[m[32mGlobal[m
+[32m+[m	[32mGlobalSection(SolutionConfigurationPlatforms) = preSolution[m
+[32m+[m		[32mDebug|Any CPU = Debug|Any CPU[m
+[32m+[m		[32mRelease|Any CPU = Release|Any CPU[m
+[32m+[m	[32mEndGlobalSection[m
+[32m+[m	[32mGlobalSection(ProjectConfigurationPlatforms) = postSolution[m
+[32m+[m		[32m{515B7AE4-309B-4156-9F33-045FE229BCF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU[m
+[32m+[m		[32m{515B7AE4-309B-4156-9F33-045FE229BCF5}.Debug|Any CPU.Build.0 = Debug|Any CPU[m
+[32m+[m		[32m{515B7AE4-309B-4156-9F33-045FE229BCF5}.Release|Any CPU.ActiveCfg = Release|Any CPU[m
+[32m+[m		[32m{515B7AE4-309B-4156-9F33-045FE229BCF5}.Release|Any CPU.Build.0 = Release|Any CPU[m
+[32m+[m	[32mEndGlobalSection[m
+[32m+[m	[32mGlobalSection(SolutionProperties) = preSolution[m
+[32m+[m		[32mHideSolutionNode = FALSE[m
+[32m+[m	[32mEndGlobalSection[m
+[32m+[m	[32mGlobalSection(ExtensibilityGlobals) = postSolution[m
+[32m+[m		[32mSolutionGuid = {42A858ED-E0F6-431E-B1A4-4FCA4B5DB61F}[m
+[32m+[m	[32mEndGlobalSection[m
+[32m+[m[32mEndGlobal[m
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/App.config b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/App.config[m
+[1mnew file mode 100644[m
+[1mindex 0000000..731f6de[m
+[1m--- /dev/null[m
+[1m+++ b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/App.config[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32mп»ї<?xml version="1.0" encoding="utf-8" ?>[m
+[32m+[m[32m<configuration>[m
+[32m+[m[32m    <startup>[m[41m [m
+[32m+[m[32m        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6.1" />[m
+[32m+[m[32m    </startup>[m
+[32m+[m[32m</configuration>[m
+\ No newline at end of file[m
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS.csproj b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS.csproj[m
+[1mnew file mode 100644[m
+[1mindex 0000000..55e27a5[m
+[1m--- /dev/null[m
+[1m+++ b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS.csproj[m
+[36m@@ -0,0 +1,53 @@[m
+[32m+[m[32mп»ї<?xml version="1.0" encoding="utf-8"?>[m
+[32m+[m[32m<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">[m
+[32m+[m[32m  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />[m
+[32m+[m[32m  <PropertyGroup>[m
+[32m+[m[32m    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>[m
+[32m+[m[32m    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>[m
+[32m+[m[32m    <ProjectGuid>{515B7AE4-309B-4156-9F33-045FE229BCF5}</ProjectGuid>[m
+[32m+[m[32m    <OutputType>Exe</OutputType>[m
+[32m+[m[32m    <RootNamespace>EPAM_HM_COMPRESS</RootNamespace>[m
+[32m+[m[32m    <AssemblyName>EPAM_HM_COMPRESS</AssemblyName>[m
+[32m+[m[32m    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>[m
+[32m+[m[32m    <FileAlignment>512</FileAlignment>[m
+[32m+[m[32m    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>[m
+[32m+[m[32m    <Deterministic>true</Deterministic>[m
+[32m+[m[32m  </PropertyGroup>[m
+[32m+[m[32m  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">[m
+[32m+[m[32m    <PlatformTarget>AnyCPU</PlatformTarget>[m
+[32m+[m[32m    <DebugSymbols>true</DebugSymbols>[m
+[32m+[m[32m    <DebugType>full</DebugType>[m
+[32m+[m[32m    <Optimize>false</Optimize>[m
+[32m+[m[32m    <OutputPath>bin\Debug\</OutputPath>[m
+[32m+[m[32m    <DefineConstants>DEBUG;TRACE</DefineConstants>[m
+[32m+[m[32m    <ErrorReport>prompt</ErrorReport>[m
+[32m+[m[32m    <WarningLevel>4</WarningLevel>[m
+[32m+[m[32m  </PropertyGroup>[m
+[32m+[m[32m  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">[m
+[32m+[m[32m    <PlatformTarget>AnyCPU</PlatformTarget>[m
+[32m+[m[32m    <DebugType>pdbonly</DebugType>[m
+[32m+[m[32m    <Optimize>true</Optimize>[m
+[32m+[m[32m    <OutputPath>bin\Release\</OutputPath>[m
+[32m+[m[32m    <DefineConstants>TRACE</DefineConstants>[m
+[32m+[m[32m    <ErrorReport>prompt</ErrorReport>[m
+[32m+[m[32m    <WarningLevel>4</WarningLevel>[m
+[32m+[m[32m  </PropertyGroup>[m
+[32m+[m[32m  <ItemGroup>[m
+[32m+[m[32m    <Reference Include="System" />[m
+[32m+[m[32m    <Reference Include="System.Core" />[m
+[32m+[m[32m    <Reference Include="System.Xml.Linq" />[m
+[32m+[m[32m    <Reference Include="System.Data.DataSetExtensions" />[m
+[32m+[m[32m    <Reference Include="Microsoft.CSharp" />[m
+[32m+[m[32m    <Reference Include="System.Data" />[m
+[32m+[m[32m    <Reference Include="System.Net.Http" />[m
+[32m+[m[32m    <Reference Include="System.Xml" />[m
+[32m+[m[32m  </ItemGroup>[m
+[32m+[m[32m  <ItemGroup>[m
+[32m+[m[32m    <Compile Include="Program.cs" />[m
+[32m+[m[32m    <Compile Include="Properties\AssemblyInfo.cs" />[m
+[32m+[m[32m  </ItemGroup>[m
+[32m+[m[32m  <ItemGroup>[m
+[32m+[m[32m    <None Include="App.config" />[m
+[32m+[m[32m  </ItemGroup>[m
+[32m+[m[32m  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />[m
+[32m+[m[32m</Project>[m
+\ No newline at end of file[m
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/Program.cs b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/Program.cs[m
+[1mnew file mode 100644[m
+[1mindex 0000000..c254c71[m
+[1m--- /dev/null[m
+[1m+++ b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/Program.cs[m
+[36m@@ -0,0 +1,62 @@[m
+[32m+[m[32mп»їusing System;[m
+[32m+[m[32musing System.Collections.Generic;[m
+[32m+[m[32musing System.IO;[m
+[32m+[m[32musing System.IO.Compression;[m
+[32m+[m[32musing System.Linq;[m
+[32m+[m[32musing System.Text;[m
+[32m+[m[32musing System.Threading.Tasks;[m
+[32m+[m
+[32m+[m[32mnamespace EPAM_HM_COMPRESS[m
+[32m+[m[32m{[m
+[32m+[m[32m    class Program[m
+[32m+[m[32m    {[m
+[32m+[m[32m        static void Main(string[] args)[m
+[32m+[m[32m        {[m
+[32m+[m[32m            string sourceFile = "E://HM/EPAM_HM_Compress/goncharov_ivan-obyknovennaja_istorija.txt"; // РёСЃС…РѕРґРЅС‹Р№ С„Р°Р№Р»[m
+[32m+[m[32m            string compressedFile = "E://HM/EPAM_HM_Compress/goncharov_ivan-obyknovennaja_istorija.gz"; // СЃР¶Р°С‚С‹Р№ С„Р°Р№Р»[m
+[32m+[m[32m            string targetFile = "E://HM/EPAM_HM_Compress/goncharov_new.txt"; // РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРЅС‹Р№ С„Р°Р№Р»[m
+[32m+[m
+[32m+[m[32m            Compress(sourceFile, compressedFile);[m
+[32m+[m
+[32m+[m[32m            Decompress(compressedFile, targetFile);[m
+[32m+[m
+[32m+[m[32m            Console.ReadLine();[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        public static void Compress(string sourceFile, string compressedFile)[m
+[32m+[m[32m        {[m
+[32m+[m[32m            // РїРѕС‚РѕРє РґР»СЏ С‡С‚РµРЅРёСЏ РёСЃС…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°[m
+[32m+[m[32m            using (FileStream sourceStream = new FileStream(sourceFile, FileMode.OpenOrCreate))[m
+[32m+[m[32m            {[m
+[32m+[m[32m                // РїРѕС‚РѕРє РґР»СЏ Р·Р°РїРёСЃРё СЃР¶Р°С‚РѕРіРѕ С„Р°Р№Р»Р°[m
+[32m+[m[32m                using (FileStream targetStream = File.Create(compressedFile))[m
+[32m+[m[32m                {[m
+[32m+[m[32m                    // РїРѕС‚РѕРє Р°СЂС…РёРІР°С†РёРё[m
+[32m+[m[32m                    using (GZipStream compressionStream = new GZipStream(targetStream, CompressionMode.Compress))[m
+[32m+[m[32m                    {[m
+[32m+[m[32m                        sourceStream.CopyTo(compressionStream); // РєРѕРїРёСЂСѓРµРј Р±Р°Р№С‚С‹ РёР· РѕРґРЅРѕРіРѕ РїРѕС‚РѕРєР° РІ РґСЂСѓРіРѕР№[m
+[32m+[m[32m                        Console.WriteLine($"РЎР¶Р°С‚РёРµ С„Р°Р№Р»Р° {sourceFile} Р·Р°РІРµСЂС€РµРЅРѕ. \nРСЃС…РѕРґРЅС‹Р№ СЂР°Р·РјРµСЂ: {sourceStream.Length.ToString()}  \nСЃР¶Р°С‚С‹Р№ СЂР°Р·РјРµСЂ: {targetStream.Length.ToString()}.");[m
+[32m+[m[32m                    }[m
+[32m+[m[32m                }[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        public static void Decompress(string compressedFile, string targetFile)[m
+[32m+[m[32m        {[m
+[32m+[m[32m            // РїРѕС‚РѕРє РґР»СЏ С‡С‚РµРЅРёСЏ РёР· СЃР¶Р°С‚РѕРіРѕ С„Р°Р№Р»Р°[m
+[32m+[m[32m            using (FileStream sourceStream = new FileStream(compressedFile, FileMode.OpenOrCreate))[m
+[32m+[m[32m            {[m
+[32m+[m[32m                // РїРѕС‚РѕРє РґР»СЏ Р·Р°РїРёСЃРё РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРЅРѕРіРѕ С„Р°Р№Р»Р°[m
+[32m+[m[32m                using (FileStream targetStream = File.Create(targetFile))[m
+[32m+[m[32m                {[m
+[32m+[m[32m                    // РїРѕС‚РѕРє СЂР°Р·Р°СЂС…РёРІР°С†РёРё[m
+[32m+[m[32m                    using (GZipStream decompressionStream = new GZipStream(sourceStream, CompressionMode.Decompress))[m
+[32m+[m[32m                    {[m
+[32m+[m[32m                        decompressionStream.CopyTo(targetStream);[m
+[32m+[m[32m                        Console.WriteLine($"Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅ С„Р°Р№Р»: {targetFile}");[m
+[32m+[m[32m                    }[m
+[32m+[m[32m                }[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/Properties/AssemblyInfo.cs b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/Properties/AssemblyInfo.cs[m
+[1mnew file mode 100644[m
+[1mindex 0000000..3b8aef9[m
+[1m--- /dev/null[m
+[1m+++ b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/Properties/AssemblyInfo.cs[m
+[36m@@ -0,0 +1,36 @@[m
+[32m+[m[32mп»їusing System.Reflection;[m
+[32m+[m[32musing System.Runtime.CompilerServices;[m
+[32m+[m[32musing System.Runtime.InteropServices;[m
+[32m+[m
+[32m+[m[32m// General Information about an assembly is controlled through the following[m
+[32m+[m[32m// set of attributes. Change these attribute values to modify the information[m
+[32m+[m[32m// associated with an assembly.[m
+[32m+[m[32m[assembly: AssemblyTitle("EPAM_HM_COMPRESS")][m
+[32m+[m[32m[assembly: AssemblyDescription("")][m
+[32m+[m[32m[assembly: AssemblyConfiguration("")][m
+[32m+[m[32m[assembly: AssemblyCompany("Microsoft")][m
+[32m+[m[32m[assembly: AssemblyProduct("EPAM_HM_COMPRESS")][m
+[32m+[m[32m[assembly: AssemblyCopyright("Copyright В© Microsoft 2019")][m
+[32m+[m[32m[assembly: AssemblyTrademark("")][m
+[32m+[m[32m[assembly: AssemblyCulture("")][m
+[32m+[m
+[32m+[m[32m// Setting ComVisible to false makes the types in this assembly not visible[m
+[32m+[m[32m// to COM components.  If you need to access a type in this assembly from[m
+[32m+[m[32m// COM, set the ComVisible attribute to true on that type.[m
+[32m+[m[32m[assembly: ComVisible(false)][m
+[32m+[m
+[32m+[m[32m// The following GUID is for the ID of the typelib if this project is exposed to COM[m
+[32m+[m[32m[assembly: Guid("515b7ae4-309b-4156-9f33-045fe229bcf5")][m
+[32m+[m
+[32m+[m[32m// Version information for an assembly consists of the following four values:[m
+[32m+[m[32m//[m
+[32m+[m[32m//      Major Version[m
+[32m+[m[32m//      Minor Version[m
+[32m+[m[32m//      Build Number[m
+[32m+[m[32m//      Revision[m
+[32m+[m[32m//[m
+[32m+[m[32m// You can specify all the values or you can default the Build and Revision Numbers[m
+[32m+[m[32m// by using the '*' as shown below:[m
+[32m+[m[32m// [assembly: AssemblyVersion("1.0.*")][m
+[32m+[m[32m[assembly: AssemblyVersion("1.0.0.0")][m
+[32m+[m[32m[assembly: AssemblyFileVersion("1.0.0.0")][m
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/bin/Debug/EPAM_HM_COMPRESS.exe b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/bin/Debug/EPAM_HM_COMPRESS.exe[m
+[1mnew file mode 100644[m
+[1mindex 0000000..b3e1b01[m
+Binary files /dev/null and b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/bin/Debug/EPAM_HM_COMPRESS.exe differ
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/bin/Debug/EPAM_HM_COMPRESS.exe.config b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/bin/Debug/EPAM_HM_COMPRESS.exe.config[m
+[1mnew file mode 100644[m
+[1mindex 0000000..731f6de[m
+[1m--- /dev/null[m
+[1m+++ b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/bin/Debug/EPAM_HM_COMPRESS.exe.config[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32mп»ї<?xml version="1.0" encoding="utf-8" ?>[m
+[32m+[m[32m<configuration>[m
+[32m+[m[32m    <startup>[m[41m [m
+[32m+[m[32m        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6.1" />[m
+[32m+[m[32m    </startup>[m
+[32m+[m[32m</configuration>[m
+\ No newline at end of file[m
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/bin/Debug/EPAM_HM_COMPRESS.pdb b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/bin/Debug/EPAM_HM_COMPRESS.pdb[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e0318b9[m
+Binary files /dev/null and b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/bin/Debug/EPAM_HM_COMPRESS.pdb differ
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache[m
+[1mnew file mode 100644[m
+[1mindex 0000000..3b67937[m
+Binary files /dev/null and b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache differ
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/EPAM_HM_COMPRESS.csproj.CoreCompileInputs.cache b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/EPAM_HM_COMPRESS.csproj.CoreCompileInputs.cache[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6401340[m
+[1m--- /dev/null[m
+[1m+++ b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/EPAM_HM_COMPRESS.csproj.CoreCompileInputs.cache[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32meaa857e8b39dfac752aaa89b03ee4f7e3aa601ab[m
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/EPAM_HM_COMPRESS.csproj.FileListAbsolute.txt b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/EPAM_HM_COMPRESS.csproj.FileListAbsolute.txt[m
+[1mnew file mode 100644[m
+[1mindex 0000000..a991b4e[m
+[1m--- /dev/null[m
+[1m+++ b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/EPAM_HM_COMPRESS.csproj.FileListAbsolute.txt[m
+[36m@@ -0,0 +1,7 @@[m
+[32m+[m[32mC:\Users\sss\source\repos\EPAM_HM_COMPRESS\EPAM_HM_COMPRESS\bin\Debug\EPAM_HM_COMPRESS.exe.config[m
+[32m+[m[32mC:\Users\sss\source\repos\EPAM_HM_COMPRESS\EPAM_HM_COMPRESS\bin\Debug\EPAM_HM_COMPRESS.exe[m
+[32m+[m[32mC:\Users\sss\source\repos\EPAM_HM_COMPRESS\EPAM_HM_COMPRESS\bin\Debug\EPAM_HM_COMPRESS.pdb[m
+[32m+[m[32mC:\Users\sss\source\repos\EPAM_HM_COMPRESS\EPAM_HM_COMPRESS\obj\Debug\EPAM_HM_COMPRESS.csprojAssemblyReference.cache[m
+[32m+[m[32mC:\Users\sss\source\repos\EPAM_HM_COMPRESS\EPAM_HM_COMPRESS\obj\Debug\EPAM_HM_COMPRESS.csproj.CoreCompileInputs.cache[m
+[32m+[m[32mC:\Users\sss\source\repos\EPAM_HM_COMPRESS\EPAM_HM_COMPRESS\obj\Debug\EPAM_HM_COMPRESS.exe[m
+[32m+[m[32mC:\Users\sss\source\repos\EPAM_HM_COMPRESS\EPAM_HM_COMPRESS\obj\Debug\EPAM_HM_COMPRESS.pdb[m
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/EPAM_HM_COMPRESS.csprojAssemblyReference.cache b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/EPAM_HM_COMPRESS.csprojAssemblyReference.cache[m
+[1mnew file mode 100644[m
+[1mindex 0000000..51e185e[m
+Binary files /dev/null and b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/EPAM_HM_COMPRESS.csprojAssemblyReference.cache differ
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/EPAM_HM_COMPRESS.exe b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/EPAM_HM_COMPRESS.exe[m
+[1mnew file mode 100644[m
+[1mindex 0000000..b3e1b01[m
+Binary files /dev/null and b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/EPAM_HM_COMPRESS.exe differ
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/EPAM_HM_COMPRESS.pdb b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/EPAM_HM_COMPRESS.pdb[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e0318b9[m
+Binary files /dev/null and b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/EPAM_HM_COMPRESS.pdb differ
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e69de29[m
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e69de29[m
+[1mdiff --git a/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs b/EPAM_HM_Compress/EPAM_HM_COMPRESS/EPAM_HM_COMPRESS/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e69de29[m
+[1mdiff --git a/EPAM_HM_Compress/goncharov_ivan-obyknovennaja_istorija.gz b/EPAM_HM_Compress/goncharov_ivan-obyknovennaja_istorija.gz[m
+[1mnew file mode 100644[m
+[1mindex 0000000..5873f08[m
+Binary files /dev/null and b/EPAM_HM_Compress/goncharov_ivan-obyknovennaja_istorija.gz differ
+[1mdiff --git a/EPAM_HM_Compress/goncharov_ivan-obyknovennaja_istorija.txt b/EPAM_HM_Compress/goncharov_ivan-obyknovennaja_istorija.txt[m
+[1mnew file mode 100644[m
+[1mindex 0000000..bd69406[m
+[1m--- /dev/null[m
+[1m+++ b/EPAM_HM_Compress/goncharov_ivan-obyknovennaja_istorija.txt[m
+[36m@@ -0,0 +1,8263 @@[m
+[32m+[m[32mИван Гончаров[m
+[32m+[m
+[32m+[m[32m«Обыкновенная история»[m
+[32m+[m
+[32m+[m[32mРоман в двух частях[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m[32mКак жить?[m
+[32m+[m
+[32m+[m[32m(вступительная статья)[m
+[32m+[m
+[32m+[m[32mПисатели двумя способами исследуют жизнь – умственным, начинающимся с размышлений о явлениях жизни, и художническим, суть которого – постижение тех же явлений не умом (или, вернее, не только умом), а всей своей человеческой сущностью, или как принято говорить, интуитивно.[m
+[32m+[m
+[32m+[m[32mИнтеллектуальное познание жизни приводит автора к логическому изложению изученного им материала, художническое – к выражению сущности тех же явлений через систему художественных образов. Писатель-беллетрист как бы дает картину жизни, но не просто копию с нее, а преображенную в новую художественную реальность, отчего явления, заинтересовавшие автора и освещенные ярким светом его гения или таланта, предстают перед нами особо зримыми, а иногда и зримыми насквозь.[m
+[32m+[m
+[32m+[m[32mПредполагается, что истинный писатель дает нам жизнь только в виде художественного ее изображения. Но на деле таких «чистых» авторов не так много, а может быть, и не бывает совсем. Чаще всего писатель является и художником и мыслителем.[m
+[32m+[m
+[32m+[m[32mИван Александрович Гончаров издавна считается одним из самых объективных русских писателей, то есть писателем, в произведениях которого личные симпатии или антипатии не выставляются в качестве мерила тех или иных жизненных ценностей. Он дает художественные картины жизни объективно, как бы «добру и злу внимая равнодушно», предоставляя читателю самому, своим собственным умом вершить суд и выносить приговор.[m
+[32m+[m
+[32m+[m[32mИменно в романе «Обыкновенная история» Гончаров устами сотрудника журнала излагает эту мысль в самом ее чистом виде: «…писатель тогда только, во-первых, напишет дельно, когда не будет находиться под влиянием личного увлечения и пристрастия. Он должен обозревать покойным и светлым взглядом жизнь и людей вообще, – иначе выразит только свое я, до которого никому нет дела». А в статье «Лучше поздно, чем никогда» Гончаров замечает: «…я о себе прежде скажу, что принадлежу к последней категории, то есть увлекаюсь больше всего (как это заметил обо мне Белинский) „своею способностью рисовать“.[m
+[32m+[m
+[32m+[m[32mИ в своем первом романе Гончаров нарисовал картину русской жизни в небольшой деревенской усадьбе и в Петербурге 40-х годов XIX века. Разумеется, Гончаров не мог дать полной картины жизни и деревни и Петербурга, как вообще ни один автор не может этого сделать, потому что жизнь всегда многообразнее любого ее изображения. Посмотрим, получилась ли изображаемая картина объективной, как этого желал автор, или какие-то побочные соображения сделали эту картину субъективной.[m
+[32m+[m
+[32m+[m[32mДраматическим содержанием романа является та своеобразная дуэль, которую ведут два главных ее персонажа: молодой человек Александр Адуев и его дядя Петр Иваныч. Дуэль увлекательная, динамичная, в которой успех выпадает на долю то одной, то другой стороны. Поединок за право прожить жизнь согласно своим идеалам. А идеалы у дяди и племянника прямо противоположные.[m
+[32m+[m
+[32m+[m[32mЮный Александр является в Петербург прямо из теплых материнских объятий, с ног до головы одетый в доспехи высоких и благородных душевных порывов, является в столицу не из праздного любопытства, а с тем, чтобы вступить в решительный бой со всем бездушным, расчетливым, гнусным. «Меня влекло какое-то неодолимое стремление, жажда благородной деятельности», – восклицает этот наивный идеалист. И на бой он вызвал не кого-нибудь, а весь мир зла. Этакий маленький доморощенный донкихотик! И ведь тоже начитавшийся и наслушавшийся всяческих благородных бредней.[m
+[32m+[m
+[32m+[m[32mТонкая ирония Гончарова, с какой он описывает в начале романа своего юного героя – его отъезд из дома, клятвы в вечной любви Сонечке и другу своему Поспелову, первые его робкие шаги в Петербурге, – именно этот весьма насмешливый взгляд Гончарова на своего юного героя делает образ Адуева-младшего милым нашему сердцу, но уже заранее предопределяет исход борьбы племянника и дяди. К истинным героям, способным на великие подвиги, авторы не относятся с иронией.[m
+[32m+[m
+[32m+[m[32mА вот и противная сторона: столичный житель, владелец стекольного и фарфорового завода, чиновкник особых поручений, человек трезвого ума и практического смысла, тридцатидевятилетний Петр Иваныч Адуев – второй герой романа. Гончаров наделяет его и юмором, и даже сарказмом, но сам не относится к этому своему детищу с иронией, что заставляет нас предполагать: вот он, истинный герой романа, вот тот, на кого автор предлагает нам взять равнение.[m
+[32m+[m
+[32m+[m[32mДва этих характера, заинтересовавшие Гончаров, были ярчайшими типа своего времени. Родоначальником первого явился Владимир Ленский, второго – сам Евгений Онегин, хотя и в сильно преображенном виде. Замечу здесь в скобках, что и холодность Онегина, его опытность терпят точно такой же крах, как и опытность и значение жизни Петра Иваныча Адуева.[m
+[32m+[m
+[32m+[m[32mЕще смутно ощущая цельность своего романа, Гончаров пишет: «…в встрече мягкого, избалованного ленью и барством, мечтателя-племянника с практическим дядей – выразился намек на мотив, который едва только начал разыгрываться в самом бойком центре – в Петербурге. Мотив этот – слабое мерцание сознания необходимости труда, настоящего, не рутинного, а живого дела в борьбе со всероссийским застоем».[m
+[32m+[m
+[32m+[m[32mГончарову очень хочется взять себе в образец именно этого человека «живого дела», и не только себе, но и предложить его вниманию читателя именно в качестве образца.[m
+[32m+[m
+[32m+[m[32mС каким блеском написаны диалоги дядюшки и племянника! Как спокойно, уверенно, безапеляционно разбивает дядя своего горячего, но не вооруженного страшным оружием логики и опыта племянника! И каждая критическая фраза убийственна, неотразима. Неотразима оттого, что он говорит правду. Тяжелую, иногда даже обидную и беспощадную, но именно правду.[m
+[32m+[m
+[32m+[m[32mВот он высмеивает «вещественные знаки… невещественных отношений» – колечко и локон, подаренные Сонечкой при прощании уезжающему в столицу любимому Сашеньке. «И это ты вез за тысячу пятьсот верст?.. Лучше бы ты привез еще мешок сушеной малины», – советует дядя и швыряет в окно бесценные для Александра символы вечной любви. Александру кажутся дикими и холодными слова дяди и его поступки. Может ли он забыть свою Сонечку? Никогда!..[m
+[32m+[m
+[32m+[m[32mУвы, прав оказался дядя. Прошло совсем немного времени, и Александр влюбляется в Наденьку Любецкую, влюбляется со всем пылом молодости, со свойственной его натуре страстностью, безотчетно, бездумно!.. Сонечка забыта совершенно. Он даже не только ни разу не вспомнит ее, но и забудет ее имя. Любовь к Наденьке заполнит Александра целиком!.. Конца не будет его лучезарному счастью. Какое тут может быть дело, о котором твердит дядя, какая работа, когда он, можно сказать, денно и нощно пропадает за городом у Любецких! Ах, уж этот дядя, у него на уме только дело. Бесчувственный!.. Как у него язык поворачивается говорить, что Наденька, его Наденька, это божество, это совершенство, может его надуть. «Она обманет! Этот ангел, эта олицетворенная искренность…» – восклицает юный Александр. «А все-таки женщина, и, вероятно, обманет», – отвечает дядя. Ох, эти трезвые, беспощадные ум и опыт. Тяжело!.. Но правда: Наденька обманула. Она влюбилась в графа, и Александр получает отставку. Вся жизнь сразу же окрасилась в черный цвет. А дядя твердит: я же предупреждал тебя!..[m
+[32m+[m
+[32m+[m[32mАлександр терпит крах решительно по всем статьям – в любви, в дружбе, в порывах к творчеству, в работе. Всё, решительно всё, чему учили его учителя и книги, все оказалось вздором и с легким хрустом разлеталось под железной поступью трезвого рассудка и практического дела. В самой напряженной сцене романа, когда Александр доведен до отчаяния, запил, опустился, воля его атрофирована, интерес к жизни исчез полностью, дядя последний лепет оправдания племянника парирует: «Чего я требовал от тебя – не я все это выдумал». «Кто же? – спросила Лизавета Александровна (жена Петра Иваныча – В.Р.). – Век».[m
+[32m+[m
+[32m+[m[32mВот где открылась главная мотивировка поведения Петра Иваныча Адуева. Веление века! Век требовал! «Посмотри-ка, – взывает он, – на нынешнюю молодежь: что за молодцы! Как все кипит умственною деятельностью, энергией, как ловко и легко расправляются они со всем этим вздором, что на вашем старом языке называется треволнениями, страданиями… и черт знает что еще!»[m
+[32m+[m
+[32m+[m[32mВот она, кульминационная точка романа! Вот он, решающий удар противника! Таков век! «Так непременно и надо следовать всему, что выдумает твой век?.. Так все и свято, все и правда?» – «Все и свято!» – категорически отрезает Петр Иваныч.[m
+[32m+[m
+[32m+[m[32mПроблема, как надо жить – чувством или разумом, можно сказать, вечная проблема. Как это ни удивительно, но, встречаясь со студентами Московского полиграфического института, я получил записку такого содержания: «Скажите, пожалуйста, как лучше жить – сердцем или умом?» И это в 1971 году! Через сто двадцать пять лет после того, как написан роман «Обыкновенная история».[m
+[32m+[m
+[32m+[m[32mЕсть в романе одно чрезвычайно примечательное место. «По-вашему, и чувством надо управлять, как паром, – заметил Александр, – то выпустить немного, то вдруг остановить, открыть клапан или закрыть…» – «Да, этот клапан недаром природа дала человеку – это рассудок…»[m
+[32m+[m
+[32m+[m[32mНа протяжении всего романа читатель следит за этими двумя способами проживания жизни – чувством и рассудком. Порою кажется, что Гончаров в самой категорической форме советует нам жить разумно и только разумно, во всяком случае, поверять разумом чувство, как Сальери алгеброй гармонию. Но это Гончаров-мыслитель, человек размышляющий. И будь автор романа только таковым, он непременно и «доказал» бы нам, что жить необходимо разумно. Однако Гончаров прежде всего художник, да еще реалистический художник. Он изображает явление таким, каково оно есть, а не таким, каким ему бы хотелось его видеть. Как сын своего века Гончаров целиком за Адуева-старшего, он сам в этом признается: «В борьбе дяди с племянником отразилась и тогдашняя, только что начавшаяся ломка старых понятий и нравов – сентиментальности, карикатурного преувеличения чувства дружбы и любви, поэзия праздности, семейная и домашняя ложь напускных, в сущности небывалых чувств… Все это – отживало, уходило; являлись слабые проблески новой зари, чего-то трезвого, делового, нужного».[m
+[32m+[m
+[32m+[m[32mВ фигуре Адуева-старшего Гончаров чувствовал нового человека. И чувствовал верно – это шел именно новый человек. На него возлагал надежды Иван Александрович.[m
+[32m+[m
+[32m+[m[32mКто же такой Петр Иваныч Адуев, этот образец для подражания, этот человек дела и трезвого ума? Исторически всем нам он давно ясен. Этот новый тип, идущий на смену людям обветшавшего феодального уклада, – капиталист. А капиталист во все времена, с самого своего рождения, и во всех странах един – это человек дела и расчета.[m
+[32m+[m
+[32m+[m[32mСколько раз в романе Адуев-старший произносит слова о деле и о расчете. Расчет в деле. Расчет в дружбе. Расчет в любви. Расчет в женитьбе… И это слово никогда не звучит в его устах осуждающе. Даже в вопросах творчества расчет. «Уверен ли ты, что у тебя есть талант? Без этого ведь ты будешь чернорабочий в искусстве – что ж хорошего? Талант – другое дело: можно работать; много хорошего сделаешь, и притом это капитал – стоит твоих ста душ». – «Вы и это измеряете деньгами?» – «А чем же прикажешь? чем больше тебя читают, тем больше платят денег».[m
+[32m+[m
+[32m+[m[32mВот он, расчет, выраженный в самой реальной своей реальности – в деньгах. Все меряется деньгами![m
+[32m+[m
+[32m+[m[32m«– Вы никак не можете представить себе безденежного горя! – Что ж за горе, если оно медного гроша не стоит…»[m
+[32m+[m
+[32m+[m[32mКапиталист… Мера ценности – деньги.[m
+[32m+[m
+[32m+[m[32mГончаров – мыслитель, социолог – хочет увидеть идеал в новом типе человека, в Петре Иваныче Адуеве. Хочет… Но Гончаров-художник не дает возможности затуманиться глазам Гончарова – человека размышляющего. В познании истины художник в известном смысле более точен, нежели мыслитель, ибо «художественная литература, – по меткому выражению А.П. Чехова, – потому и называется художественной, что рисует жизнь такою, какова она есть на самом деле. Ее назначение – правда безусловная и честная».[m
+[32m+[m
+[32m+[m[32mС чувством бесспорного превосходства, с высоты своего возраста и опыта, с вершины своего знания жизни сокрушает дядя наивную и чистую веру племянника в «мира совершенство», и сокрушает с большим успехом. Вот что творится в душе когда-то пылкого, юного Александра:[m
+[32m+[m
+[32m+[m[32m«Вглядываясь в жизнь, вопрошая сердце, голову, он с ужасом видел, что ни там ни сям не осталось ни одной мечты, ни одной розовой надежды: все уже было назади; туман рассеялся; перед ним разостлалась, как степь, голая действительность. Боже! какое необозримое пространство! какой скучный безотрадный вид! Прошлое погибло, будущее уничтожено, счастья нет: все химера – а живи!»[m
+[32m+[m
+[32m+[m[32mАдуев-младший опускается до самого жалкого состояния и доходит до попытки самоубийства. Гончаров не щадит своего героя – развенчивает полностью. Нет сомнений: да, именно так и бывает с разочаровавшимися в жизни людьми.[m
+[32m+[m
+[32m+[m[32m«Научите же меня, дядюшка, по крайней мере, что мне делать теперь? Как вы вашим умом разрешите эту задачу?» – восклицает в полном бессилии Александр. И получает ответ: «Что делать? Да… ехать в деревню».[m
+[32m+[m
+[32m+[m[32mИ, проклиная город, где он похоронил свои лучшие чувства и утратил жизненные силы, Александр возвращается к «весям и пажитям»: едет назад в деревню. Александр не одержал победы. Ее одержал дядя. Одержал полностью.[m
+[32m+[m
+[32m+[m[32mНапрасно Александр едет в деревню, надеясь там на чудо воскрешения. Воскрешение невозможно, возможно только преображение. И оно происходит. Как это ни странно, но именно в деревне Александр начал тосковать по Петербургу, тому самому злому, мрачному, бездушному Петербургу, который он так недавно предавал анафеме. В мозгу преображенного Александра зашевелились новые мысли: «Чем дядюшка лучше меня? Разве я не могу отыскать себе дороги?.. нельзя же погибнуть здесь!.. А моя карьера, а фортуна?.. я только очень отстал… да за что же?..» И Александр Федорыв Адуев мчится обратно в Петербург делать свою карьеру и фортуну![m
+[32m+[m
+[32m+[m[32m«…к вам приедет не сумасброд, не мечтатель, не разочарованный, не провинциал, а просто человек, каких в Петербурге много и каким бы давно мне пора быть», – пишет он тетушке.[m
+[32m+[m
+[32m+[m[32mЯ давно заметил такое явление жизни: некоторые молодые люди, склонные к идеализации действительности, мечущие громы и молнии против любых проявлений человеческих слабостей, требующие от других идеального поведения, – повзрослев и увидав своих сверстников, людей, может быть, и не таких уж идеальных, ушедших далеко вперед по пути обыкновенного жизненного продвижения, вдруг как бы спохватываются и начинаются их догонять. Догонять во что бы то ни стало! И тут эти самые милые требовательные идеалисты превращаются в людей чрезвычайно практических, не брезгающих никакими средствами в достижении их запоздалых целей, и куда более скверных, нежели те, кого они так недавно упрекали во всех смертных грехах.[m
+[32m+[m
+[32m+[m[32mТо же произошло и с Александром. Наивный, чистый провинциал-идеалист становится, попросту говоря, чудовищем. Гончаров развенчал своего героя до конца. Вот, как бы говорит автор, таков конец человека, входящего в жизнь с надуманными представлениями о ней. Сначала он разбивает свой идеальный лоб о реальные острые углы жизни, потом этот лоб твердеет и на нем, этом лбу, вырастает твердый нарост, человек становится носорогом.[m
+[32m+[m
+[32m+[m[32mНо каковы же плоды победы Петра Иваныча, любимого героя автора? Героя, в котором Гончаров видел человека дела, человека труда, способного на борьбу со всероссийским застоем? Как это ни странно и даже ни алогично, плоды победы дядюшки один другого горше. Человек реального взгляда на вещи сначала духовно убил своего племянника, который по-своему был даже мил его сердцу, и чуть не довел до чахотки любимую жену Лизавету Александровну. В конце концов Петр Иваныч собирается продать свой завод, бросить службу, отказаться от звания тайного советника и мечтает об одном – уехать в Италию, где, может быть, ему удастся продлить жизнь своей жены.[m
+[32m+[m
+[32m+[m[32mПлемянник превратился в дядю, да еще с «припеком»! Дядя в какой-то степени превращается в племянника. Совершенно невольно Гончаров, доказывающий нам преимущества трезвого разума и расчета, криком кричит о том, что любовь к людям выше всякого расчета и бездушного дела. Именно как истинный художник Гончаров не видел в свое время выхода из этой драматической коллизии: возможности сочетать большое дело с истинно человеческой сущностью. Всякое дело, если оно является только средством личного преуспеяния, становится тяжким, а порой и гибельным для причастных к нему людей. Мир предпринимательства жесток.[m
+[32m+[m
+[32m+[m[32mГончаров-мыслитель и Гончаров-художник боролись на протяжении всего романа. Победил Гончаров-художник. И мы с полным правом можем отнести его к тем выдающимся писателям прошлого века, реализм которых, по словам Ф.Энгельса, «может проявиться даже независимо от взглядов».[m
+[32m+[m
+[32m+[m[32mЮношу или девушку, приславших мне записку с вопросом: «Как жить – чувством или разумом?» – я попросил бы прочесть и перечесть «Обыкновенную историю». Правда, в романе Гончарова не найти прямого ответа на такой вопрос. Но этот старый роман очень поможет молодым людям самостоятельно найти ответы на некоторые важные вопросы, которые ставит перед ними век двадцатый.[m
+[32m+[m
+[32m+[m
+[32m+[m[32mВиктор Розов[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m[32mЧасть первая[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m[32mI[m
+[32m+[m
+[32m+[m[32mОднажды летом, в деревне Грачах, у небогатой помещицы Анны Павловны Адуевой, все в доме поднялись с рассветом, начиная с хозяйки до цепной собаки Барбоса.[m
+[32m+[m
+[32m+[m[32mТолько единственный сын Анны Павловны, Александр Федорыч, спал, как следует спать двадцатилетнему юноше, богатырским сном; а в доме все суетились и хлопотали. Люди ходили на цыпочках и говорили шепотом, чтобы не разбудить молодого барина. Чуть кто-нибудь стукнет, громко заговорит, сейчас, как раздраженная львица, являлась Анна Павловна и наказывала неосторожного строгим выговором, обидным прозвищем, а иногда, по мере гнева и сил своих, и толчком.[m
+[32m+[m
+[32m+[m[32mНа кухне стряпали в трое рук, как будто на десятерых, хотя все господское семейство только и состояло, что из Анны Павловны да Александра Федорыча. В сарае вытирали и подмазывали повозку. Все были заняты и работали до поту лица. Барбос только ничего не делал, но и тот по-своему принимал участие в общем движении. Когда мимо его проходил лакей, кучер или шмыгала девка, он махал хвостом и тщательно обнюхивал проходящего, а сам глазами, кажется, спрашивал: «Скажут ли мне, наконец, что у нас сегодня за суматоха?»[m
+[32m+[m
+[32m+[m[32mА суматоха была оттого, что Анна Павловна отпускала сына в Петербург на службу, или, как она говорила, людей посмотреть и себя показать. Убийственный для нее день! От этого она такая грустная и расстроенная. Часто, в хлопотах, она откроет рот, чтоб приказать что-нибудь, и вдруг остановится на полуслове, голос ей изменит, она отвернется в сторону и оботрет, если успеет, слезу, а не успеет, так уронит ее в чемодан, в который сама укладывала Сашенькино белье. Слезы давно кипят у ней в сердце; они подступили к горлу, давят грудь и готовы брызнуть в три ручья; но она как будто берегла их на прощанье и изредка тратила по капельке.[m
+[32m+[m
+[32m+[m[32mНе одна она оплакивала разлуку: сильно горевал тоже камердине
