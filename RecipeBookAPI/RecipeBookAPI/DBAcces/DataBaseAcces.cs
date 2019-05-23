@@ -12,7 +12,6 @@ namespace RecipeBookAPI.DBAcces
 {
     public class DataBaseAcces
     {
-
         public RecipeModels[] AllData()
         {
             RecipeModels[] RecipeList = new RecipeModels[1];
@@ -60,6 +59,52 @@ namespace RecipeBookAPI.DBAcces
             return RecipeList;
         }
 
+        public ViewRecipeModels OneRecipe(string RN)
+        {
+            ViewRecipeModels Recipe = new ViewRecipeModels();
+            string[] ProductList = new string[1];
+
+            string connectionString = @"Data Source = (localdb)\v11.0; Initial Catalog = RecipeBooks; Integrated Security = True";
+            string sqlExpression = $"SELECT * FROM Recipes WHERE RecipeName = \"{RN}\"";
+            int NumberRows = 0;
+            int i = 0;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        NumberRows++;
+                    }
+                    ProductList = new string[NumberRows];
+                    reader.Close();
+                    reader = command.ExecuteReader();
+                    Recipe.RecipeID = (int)reader.GetValue(0);
+                    Recipe.DishID = (int)reader.GetValue(1);
+                    Recipe.RecipeName = (string)reader.GetValue(2);
+                    Recipe.WeightProduct = (int)reader.GetValue(4);
+                    Recipe.Category = (string)reader.GetValue(5);
+                    Recipe.CookingTemperature = (string)reader.GetValue(6);
+                    Recipe.CookingProcess = (string)reader.GetValue(7);
+                    Recipe.CookingTime = (string)reader.GetValue(8);
+                    Recipe.PPhotoRecipe = (string)reader.GetValue(9);
+                    Recipe.RecipeDescription = (string)reader.GetValue(10);
+                    while (reader.Read())
+                    {
+                        ProductList[i] = (string)reader.GetValue(3);    
+                        i++;
+                    }
+                    Recipe.Products = ProductList;
+                    reader.Close();
+                }
+
+            }
+            return Recipe;
+        }
+
         public RecipeCardModels[] RecipesCard()
         {
             RecipeCardModels[] RecipeList = new RecipeCardModels[1];
@@ -99,6 +144,7 @@ namespace RecipeBookAPI.DBAcces
             }
             return RecipeList;
         }
+
         public RecipeCardModels[] SearchByRN(string RN)
         {
             RecipeCardModels[] RecipeList = new RecipeCardModels[1];
@@ -153,7 +199,7 @@ namespace RecipeBookAPI.DBAcces
         public RecipeAddModels AddRecord(RecipeAddModels NR)
         {
             string connectionString = @"Data Source = (localdb)\v11.0; Initial Catalog = RecipeBooks; Integrated Security = True";
-            string sqlExpression = $"INSERT INTO Recipes (Recipe_ID, Dish_ID, RecipeName, Product_ID, WeightProduct, Category_ID, CookingTime, CookingTemperature, CookingProcess, PPhotoRecipe, RecipeDescription) VALUES ({NR.RecipeID},{NR.DishID},{NR.RecipeName},{NR.ProductID},{NR.WeightProduct},{NR.CategoryID},{NR.CookingTime},{NR.CookingTemperature},{NR.CookingProcess},{NR.PPhotoRecipe},{NR.RecipeDescription})";
+            string sqlExpression = $"INSERT INTO Recipes (Dish_ID, [RecipeName], Product_ID, WeightProduct, Category_ID, CookingTime, CookingTemperature, CookingProcess, PPhotoRecipe, RecipeDescription) VALUES ({NR.DishID},{NR.RecipeName},{NR.ProductID},{NR.WeightProduct},{NR.CategoryID},{NR.CookingTime},{NR.CookingTemperature},{NR.CookingProcess},{NR.PPhotoRecipe},{NR.RecipeDescription})";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -161,6 +207,46 @@ namespace RecipeBookAPI.DBAcces
                 command.ExecuteNonQuery();
             }
             return NR;
+        }
+
+        public string DeletRecipe(int DishID)
+        {
+            string connectionString = @"Data Source = (localdb)\v11.0; Initial Catalog = RecipeBooks; Integrated Security = True";
+            string sqlExpression = $"DELETE FROM Recipes WHERE Dish_ID = '{DishID}'";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return "Successful execution";
+                }
+                catch
+                {
+                    return "Not successful execution";
+                }
+            }
+        }
+
+        public string DeletRecipeOnName(string RecipeName)
+        {
+            string connectionString = @"Data Source = (localdb)\v11.0; Initial Catalog = RecipeBooks; Integrated Security = True";
+            string sqlExpression = $"DELETE FROM Recipes WHERE RecipeName = '{RecipeName}'";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return "Successful execution";
+                }
+                catch
+                {
+                    return "Not successful execution";
+                }
+            }
         }
     }
 }

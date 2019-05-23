@@ -16,8 +16,30 @@ namespace RecipeBookAPI.Controllers
         public RecipeAddModels AddRecord(RecipeAddModels NR) // Доделать (Invalid column name)
         {
             DataBaseAcces db = new DataBaseAcces();
-            
+
             return db.AddRecord(NR);
         }
+        [HttpPost]
+        public string DeleteRecord(RecipeAddModels RM)
+        {
+            DataBaseAcces db = new DataBaseAcces();
+
+            return db.DeletRecipe(RM.DishID);
+        }
+        [HttpPost]
+        public string DeleteRecordOnName(RecipeAddModels RM)
+        {
+            DataBaseAcces db = new DataBaseAcces();
+
+            return db.DeletRecipeOnName(RM.RecipeName);
+        }
+        [HttpPost]
+        public string Recipe(ViewRecipeModels VRM)
+        {
+            DataBaseAcces db = new DataBaseAcces();
+
+            return db.DeletRecipeOnName(VRM.RecipeName);
+        }
+
     }
 }
