@@ -196,15 +196,36 @@ namespace RecipeBookAPI.DBAcces
             return RecipeList;
         }
 
-        public RecipeAddModels AddRecord(RecipeAddModels NR)
+        public ViewRecipeAddModels AddRecord(ViewRecipeAddModels NR)
         {
-            string connectionString = @"Data Source = (localdb)\v11.0; Initial Catalog = RecipeBooks; Integrated Security = True";
-            string sqlExpression = $"INSERT INTO Recipes (Dish_ID, [RecipeName], Product_ID, WeightProduct, Category_ID, CookingTime, CookingTemperature, CookingProcess, PPhotoRecipe, RecipeDescription) VALUES ({NR.DishID},{NR.RecipeName},{NR.ProductID},{NR.WeightProduct},{NR.CategoryID},{NR.CookingTime},{NR.CookingTemperature},{NR.CookingProcess},{NR.PPhotoRecipe},{NR.RecipeDescription})";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            for(int i = 0; i < NR.ProductID.Length; i++)
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection);
-                command.ExecuteNonQuery();
+                string connectionString = @"Data Source = (localdb)\v11.0; Initial Catalog = RecipeBooks; Integrated Security = True";
+                string sqlExpression = "INSERT INTO [Recipes] ([Dish_ID], [RecipeName], [Product_ID], [WeightProduct], [Category_ID], [CookingTime], [CookingTemperature], [CookingProcess], [PPhotoRecipe], [RecipeDescription]) VALUES (@Value1,@Value2,@Value3,@Value4,@Value5,@Value6,@Value7,@Value8,@Value9,@Value10)";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.Parameters.AddWithValue("@Value1", NR.DishID);
+                    command.Parameters.AddWithValue("@Value2", NR.RecipeName);
+                    command.Parameters.AddWithValue("@Value3", NR.ProductID[i]);
+                    command.Parameters.AddWithValue("@Value4", NR.WeightProduct);
+                    command.Parameters.AddWithValue("@Value5", NR.CategoryID);
+                    command.Parameters.AddWithValue("@Value6", NR.CookingTime);
+                    command.Parameters.AddWithValue("@Value7", NR.CookingTemperature);
+                    command.Parameters.AddWithValue("@Value8", NR.CookingProcess);
+                    command.Parameters.AddWithValue("@Value9", NR.PPhotoRecipe);
+                    command.Parameters.AddWithValue("@Value10", NR.RecipeDescription);
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException ms)
+                    {
+                        NR = new ViewRecipeAddModels();
+                        NR.RecipeName = ms.ToString();
+                    }
+                }
             }
             return NR;
         }

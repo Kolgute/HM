@@ -13,7 +13,7 @@ namespace RecipeBookAPI.Controllers
     public class PostController : ApiController
     {
         [HttpPost]
-        public RecipeAddModels AddRecord(RecipeAddModels NR) // Доделать (Invalid column name)
+        public ViewRecipeAddModels AddRecord(ViewRecipeAddModels NR) // Доделать (Invalid column name)
         {
             DataBaseAcces db = new DataBaseAcces();
 
