@@ -76,4 +76,18 @@ namespace RecipeBookAPI.Models
         public string RecipeDescription { get; set; }
 
     }
+
+    public class OneRecipeModels
+    {
+        public int DishID { get; set; }
+        public string RecipeName { get; set; }
+        public string[] Product { get; set; }
+        public int WeightProduct { get; set; }
+        public string Category { get; set; }
+        public string CookingTime { get; set; }
+        public string CookingTemperature { get; set; }
+        public string CookingProcess { get; set; }
+        public string PPhotoRecipe { get; set; }
+        public string RecipeDescription { get; set; }
+    }
 }

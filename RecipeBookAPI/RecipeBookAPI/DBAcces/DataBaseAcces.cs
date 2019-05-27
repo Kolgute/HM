@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -12,105 +13,14 @@ namespace RecipeBookAPI.DBAcces
 {
     public class DataBaseAcces
     {
-        public RecipeModels[] AllData()
-        {
-            RecipeModels[] RecipeList = new RecipeModels[1];
-            object[] obj = new object[1];
-            string connectionString = @"Data Source = (localdb)\v11.0; Initial Catalog = RecipeBooks; Integrated Security = True";
-            string sqlExpression = "SELECT Recipes.Recipe_ID, Recipes.Dish_ID, Recipes.RecipeName, ProductList.ProductName, Recipes.WeightProduct, CategoriesList.CategoryName, Recipes.CookingTime, Recipes.CookingTemperature, Recipes.CookingProcess, Recipes.PPhotoRecipe, Recipes.RecipeDescription FROM ProductList INNER JOIN (CategoriesList INNER JOIN Recipes ON CategoriesList.Category_ID = Recipes.Category_ID) ON ProductList.Product_ID = Recipes.Product_ID";
-            int NumberRows = 0;
-            int i = 0;
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection);
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        NumberRows++;                       
-                    }
-                    RecipeList = new RecipeModels[NumberRows];
-                    obj = new object[NumberRows];
-                    reader.Close();
-                    reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        RecipeModels Recipe = new RecipeModels();
-                        Recipe.RecipeID = (int)reader.GetValue(0);
-                        Recipe.DishID = (int)reader.GetValue(1);
-                        Recipe.RecipeName = (string)reader.GetValue(2);
-                        Recipe.Products = (string)reader.GetValue(3);
-                        Recipe.WeightProduct = (int)reader.GetValue(4);
-                        Recipe.Category = (string)reader.GetValue(5);
-                        Recipe.CookingTemperature = (string)reader.GetValue(6);
-                        Recipe.CookingProcess = (string)reader.GetValue(7);
-                        Recipe.CookingTime = (string)reader.GetValue(8);
-                        Recipe.PPhotoRecipe = (string)reader.GetValue(9);
-                        Recipe.RecipeDescription = (string)reader.GetValue(10);
-                        obj[i] = Recipe;
-                        RecipeList[i] = (RecipeModels)obj[i];
-                        i++;
-                    }
-                 reader.Close();
-                }
-            }
-            return RecipeList;
-        }
-
-        public ViewRecipeModels OneRecipe(string RN)
-        {
-            ViewRecipeModels Recipe = new ViewRecipeModels();
-            string[] ProductList = new string[1];
-
-            string connectionString = @"Data Source = (localdb)\v11.0; Initial Catalog = RecipeBooks; Integrated Security = True";
-            string sqlExpression = $"SELECT * FROM Recipes WHERE RecipeName = \"{RN}\"";
-            int NumberRows = 0;
-            int i = 0;
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection);
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        NumberRows++;
-                    }
-                    ProductList = new string[NumberRows];
-                    reader.Close();
-                    reader = command.ExecuteReader();
-                    Recipe.RecipeID = (int)reader.GetValue(0);
-                    Recipe.DishID = (int)reader.GetValue(1);
-                    Recipe.RecipeName = (string)reader.GetValue(2);
-                    Recipe.WeightProduct = (int)reader.GetValue(4);
-                    Recipe.Category = (string)reader.GetValue(5);
-                    Recipe.CookingTemperature = (string)reader.GetValue(6);
-                    Recipe.CookingProcess = (string)reader.GetValue(7);
-                    Recipe.CookingTime = (string)reader.GetValue(8);
-                    Recipe.PPhotoRecipe = (string)reader.GetValue(9);
-                    Recipe.RecipeDescription = (string)reader.GetValue(10);
-                    while (reader.Read())
-                    {
-                        ProductList[i] = (string)reader.GetValue(3);    
-                        i++;
-                    }
-                    Recipe.Products = ProductList;
-                    reader.Close();
-                }
-
-            }
-            return Recipe;
-        }
+        //Get Metods
 
         public RecipeCardModels[] RecipesCard()
         {
             RecipeCardModels[] RecipeList = new RecipeCardModels[1];
             object[] obj = new object[1];
             string connectionString = @"Data Source = (localdb)\v11.0; Initial Catalog = RecipeBooks; Integrated Security = True";
-            string sqlExpression = "SELECT DISTINCT RecipeName, PPhotoRecipe, RecipeDescription FROM Recipes";
+            string sqlExpression = "SELECT DISTINCT Recipes.RecipeName, CategoriesList.CategoryName, Recipes.PPhotoRecipe, Recipes.RecipeDescription FROM CategoriesList INNER JOIN Recipes ON CategoriesList.Category_ID = Recipes.Category_ID";
             int NumberRows = 0;
 
             int i = 0;
@@ -133,8 +43,9 @@ namespace RecipeBookAPI.DBAcces
                     {
                         RecipeCardModels Recipe = new RecipeCardModels();
                         Recipe.RecipeName = (string)reader.GetValue(0);
-                        Recipe.PPhotoRecipe = (string)reader.GetValue(1);
-                        Recipe.RecipeDescription = (string)reader.GetValue(2);
+                        Recipe.Category = (string)reader.GetValue(1);
+                        Recipe.PPhotoRecipe = (string)reader.GetValue(2);
+                        Recipe.RecipeDescription = (string)reader.GetValue(3);
                         obj[i] = Recipe;
                         RecipeList[i] = (RecipeCardModels)obj[i];
                         i++;
@@ -145,12 +56,57 @@ namespace RecipeBookAPI.DBAcces
             return RecipeList;
         }
 
+        public OneRecipeModels Recipe(int Dish_ID)
+        {
+            OneRecipeModels recipe = new OneRecipeModels();
+            string connectionString = @"Data Source = (localdb)\v11.0; Initial Catalog = RecipeBooks; Integrated Security = True";
+            string sqlExpression = "SELECT Recipes.Dish_ID, Recipes.RecipeName, ProductList.ProductName, Recipes.WeightProduct, CategoriesList.CategoryName, Recipes.CookingTime, Recipes.CookingTemperature, Recipes.CookingProcess, Recipes.PPhotoRecipe, Recipes.RecipeDescription " +
+                                   "FROM ProductList INNER JOIN (CategoriesList INNER JOIN Recipes ON CategoriesList.Category_ID = Recipes.Category_ID) ON ProductList.Product_ID = Recipes.Product_ID " +
+                                   "WHERE Recipes.Dish_ID = @ID";
+            int NumberRows = 0;
+            int i = 0;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.Parameters.Add("@ID", SqlDbType.Int);
+                command.Parameters["@ID"].Value = Dish_ID;
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        NumberRows++;
+                    }
+                    recipe.Product = new string[NumberRows];
+                    reader.Close();
+                    reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        recipe.DishID = (int)reader.GetValue(0);
+                        recipe.RecipeName = (string)reader.GetValue(1);
+                        recipe.Product[i] = (string)reader.GetValue(2);
+                        recipe.WeightProduct = (int)reader.GetValue(3);
+                        recipe.Category = (string)reader.GetValue(4);
+                        recipe.CookingTime = (string)reader.GetValue(5);
+                        recipe.CookingTemperature = (string)reader.GetValue(6);
+                        recipe.CookingProcess = (string)reader.GetValue(7);
+                        recipe.PPhotoRecipe = (string)reader.GetValue(8);
+                        recipe.RecipeDescription = (string)reader.GetValue(9);
+                        i++;
+                    }
+                    reader.Close();
+                }
+            }
+            return recipe;
+        }
+
         public RecipeCardModels[] SearchByRN(string RN)
         {
             RecipeCardModels[] RecipeList = new RecipeCardModels[1];
             object[] obj = new object[1];
             string connectionString = @"Data Source = (localdb)\v11.0; Initial Catalog = RecipeBooks; Integrated Security = True";
-            string sqlExpression = $"SELECT RecipeName, PPhotoRecipe, RecipeDescription FROM Recipes WHERE RecipeName = \"{RN}\"";
+            string sqlExpression = $"SELECT DISTINCT Recipes.RecipeName, CategoriesList.CategoryName, Recipes.PPhotoRecipe, Recipes.RecipeDescription FROM CategoriesList INNER JOIN Recipes ON CategoriesList.Category_ID = Recipes.Category_ID WHERE RecipeName LIKE '%@RecipesName%'";
             int NumberRows = 0;
 
             int i = 0;
@@ -158,6 +114,8 @@ namespace RecipeBookAPI.DBAcces
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.Parameters.Add("@RecipesName", SqlDbType.NVarChar);
+                command.Parameters["@RecipesName"].Value=RN;
                 SqlDataReader reader = command.ExecuteReader();                
                 if (reader.HasRows)
                 {
@@ -196,9 +154,13 @@ namespace RecipeBookAPI.DBAcces
             return RecipeList;
         }
 
+        //End Get Metods
+
+        //Post Metods
+
         public ViewRecipeAddModels AddRecord(ViewRecipeAddModels NR)
         {
-            for(int i = 0; i < NR.ProductID.Length; i++)
+            for (int i = 0; i < NR.ProductID.Length; i++)
             {
                 string connectionString = @"Data Source = (localdb)\v11.0; Initial Catalog = RecipeBooks; Integrated Security = True";
                 string sqlExpression = "INSERT INTO [Recipes] ([Dish_ID], [RecipeName], [Product_ID], [WeightProduct], [Category_ID], [CookingTime], [CookingTemperature], [CookingProcess], [PPhotoRecipe], [RecipeDescription]) VALUES (@Value1,@Value2,@Value3,@Value4,@Value5,@Value6,@Value7,@Value8,@Value9,@Value10)";
@@ -230,6 +192,9 @@ namespace RecipeBookAPI.DBAcces
             return NR;
         }
 
+        //End Post Metods
+
+        //Delete Metods
         public string DeletRecipe(int DishID)
         {
             string connectionString = @"Data Source = (localdb)\v11.0; Initial Catalog = RecipeBooks; Integrated Security = True";
@@ -249,7 +214,7 @@ namespace RecipeBookAPI.DBAcces
                 }
             }
         }
-
+       
         public string DeletRecipeOnName(string RecipeName)
         {
             string connectionString = @"Data Source = (localdb)\v11.0; Initial Catalog = RecipeBooks; Integrated Security = True";
@@ -269,5 +234,9 @@ namespace RecipeBookAPI.DBAcces
                 }
             }
         }
+        //End Delete Metods
+        
+        //Put Metods
+        //End Put Metods
     }
 }

@@ -200,3 +200,6 @@ E:\HM\RecipeBookAPI\RecipeBookAPI\obj\Debug\RecipeBookAPI.csproj.CoreCompileInpu
 E:\HM\RecipeBookAPI\RecipeBookAPI\obj\Debug\RecipeBookAPI.csproj.CopyComplete
 E:\HM\RecipeBookAPI\RecipeBookAPI\obj\Debug\RecipeBookAPI.dll
 E:\HM\RecipeBookAPI\RecipeBookAPI\obj\Debug\RecipeBookAPI.pdb
+E:\HM\RecipeBookAPI\RecipeBookAPI\bin\System.Web.Cors.dll
+E:\HM\RecipeBookAPI\RecipeBookAPI\bin\System.Web.Http.Cors.dll
+E:\HM\RecipeBookAPI\RecipeBookAPI\bin\System.Web.Http.Cors.xml

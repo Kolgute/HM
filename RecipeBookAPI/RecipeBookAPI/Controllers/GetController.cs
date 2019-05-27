@@ -14,23 +14,23 @@ namespace RecipeBookAPI.Controllers
     {
         // GET: api/Get
         [HttpGet]
-        public RecipeModels[] GetAllData()
-        {
-            DataBaseAcces db = new DataBaseAcces();
-            return db.AllData();
-        }
-        [HttpGet]
-        public RecipeCardModels[] GetCardsData()
+        public RecipeCardModels[] RecipeCards()
         {
             DataBaseAcces db = new DataBaseAcces();
             return db.RecipesCard();
         }
         [HttpGet]
-        public RecipeCardModels[] GetByRN(string id) //Не работает поиск, доделать (Invalid column name)
+        public RecipeCardModels[] GetByRN(string id)
         {
             DataBaseAcces db = new DataBaseAcces();
             return db.SearchByRN(id);
         }
-        
+        [HttpGet]
+        public OneRecipeModels OneRecipe(int id)
+        {
+            DataBaseAcces db = new DataBaseAcces();
+            return db.Recipe(id);
+        }
+
     }
 }

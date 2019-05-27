@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
+using Microsoft.AspNet;
 
 namespace RecipeBookAPI
 {
@@ -10,7 +12,8 @@ namespace RecipeBookAPI
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
+            var corsAttr = new EnableCorsAttribute("*", "*", "*") { SupportsCredentials = true };
+            config.EnableCors(corsAttr);
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -21,4 +24,5 @@ namespace RecipeBookAPI
             );
         }
     }
+
 }

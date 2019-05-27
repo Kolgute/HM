@@ -19,5 +19,19 @@ namespace RecipeBookAPI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        protected void Application_AuthenticateRequest(object sender, EventArgs e)
+        {
+            if (Context.Request.HttpMethod == "OPTIONS")
+            {
+                if (Context.Request.Headers["Origin"] != null)
+                    Context.Response.AddHeader("Access-Control-Allow-Origin", Context.Request.Headers["Origin"]);
+
+                Context.Response.AddHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, MaxDataServiceVersion");
+                Context.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+                Context.Response.AddHeader("Access-Control-Allow-Credentials", "true");
+
+                Response.End();
+            }
+        }
     }
 }
