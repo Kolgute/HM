@@ -13,10 +13,9 @@ namespace RecipeBookAPI.Controllers
     public class PostController : ApiController
     {
         [HttpPost]
-        public ViewRecipeAddModels AddRecord(ViewRecipeAddModels NR)
+        public string AddRecord(ViewRecipeAddModels NR)
         {
             DataBaseAcces db = new DataBaseAcces();
-
             return db.AddRecord(NR);
         }
         [HttpPost]
@@ -26,19 +25,19 @@ namespace RecipeBookAPI.Controllers
 
             return db.DeletRecipe(RM.DishID);
         }
-        [HttpPost]
-        public string DeleteRecordOnName(RecipeAddModels RM)
+        //[HttpPost]
+        //public string DeleteRecordOnName(RecipeAddModels RM)
+        //{
+        //    DataBaseAcces db = new DataBaseAcces();
+
+        //    return db.DeletRecipeOnName(RM.RecipeName);
+        //}
+        //[HttpPost]
+        public string Update(ViewRecipeAddModels VRM)
         {
             DataBaseAcces db = new DataBaseAcces();
 
-            return db.DeletRecipeOnName(RM.RecipeName);
-        }
-        [HttpPost]
-        public string Recipe(ViewRecipeModels VRM)
-        {
-            DataBaseAcces db = new DataBaseAcces();
-
-            return db.DeletRecipeOnName(VRM.RecipeName);
+            return db.UpdateRecipe(VRM);
         }
 
     }

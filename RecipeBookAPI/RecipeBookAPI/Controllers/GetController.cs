@@ -14,13 +14,13 @@ namespace RecipeBookAPI.Controllers
     {
         // GET: api/Get
         [HttpGet]
-        public RecipeCardModels[] RecipeCards()
+        public List<RecipeCardModels> RecipeCards()
         {
             DataBaseAcces db = new DataBaseAcces();
             return db.RecipesCard();
         }
         [HttpGet]
-        public RecipeCardModels[] GetByRN(string id)
+        public List<RecipeCardModels> GetByRN(string id)
         {
             DataBaseAcces db = new DataBaseAcces();
             return db.SearchByRN(id);
