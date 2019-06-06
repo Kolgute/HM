@@ -4,6 +4,9 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Xml;
@@ -172,6 +175,7 @@ namespace RecipeBookAPI.DBAcces
 
         public string AddRecord(ViewRecipeAddModels NR)
         {
+  
             VRAM recipe = new VRAM();
             recipe.Product = new List<int>(NR.Product.Count);
             SqlParameter parameter;
@@ -422,11 +426,17 @@ namespace RecipeBookAPI.DBAcces
                 connection.Open();
                 SqlCommand command = new SqlCommand(sqlExpression, connection);
                 SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                if (reader.HasRows)
                 {
-                    response = (int)reader.GetValue(0);
+                    while (reader.Read())
+                    {
+                        response = (int)reader.GetValue(0);
+                    }
                 }
-                
+                else
+                {
+                    return 1;
+                }      
             }
             return response;
         }
