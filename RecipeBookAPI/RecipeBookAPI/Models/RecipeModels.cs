@@ -43,6 +43,7 @@ namespace RecipeBookAPI.Models
         public string Category { get; set; }
         public string PPhotoRecipe { get; set; }
         public string RecipeDescription { get; set; }
+        public int dishID { get; set; }
     }
 
     public class RecipeAddModels
@@ -66,7 +67,7 @@ namespace RecipeBookAPI.Models
         public int DishID { get; set; }
         public string RecipeName { get; set; }
         public List<string> Product { get; set; }
-        public int WeightProduct { get; set; }
+        public string WeightProduct { get; set; }
         public string Category { get; set; }
         public string CookingTime { get; set; }
         public string CookingTemperature { get; set; }
@@ -95,13 +96,18 @@ namespace RecipeBookAPI.Models
     {
         public int DishID { get; set; }
         public string RecipeName { get; set; }
-        public List<string> Product { get; set; }
-        public int WeightProduct { get; set; }
         public string Category { get; set; }
         public string CookingTime { get; set; }
         public string CookingTemperature { get; set; }
         public string CookingProcess { get; set; }
         public string PPhotoRecipe { get; set; }
         public string RecipeDescription { get; set; }
+        public List<Tuple<string, string>> productAndWeight {get;set;} 
+    }
+
+    public class CategoryList
+    {
+        public int cateheryID { get; set; }
+        public string categoryName { get; set; }
     }
 }

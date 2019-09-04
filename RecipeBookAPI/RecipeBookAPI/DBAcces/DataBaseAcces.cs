@@ -39,6 +39,7 @@ namespace RecipeBookAPI.DBAcces
                         recipe.Category = (string)reader.GetValue(1);
                         recipe.PPhotoRecipe = (string)reader.GetValue(2);
                         recipe.RecipeDescription = (string)reader.GetValue(3);
+                        recipe.dishID = (int)reader.GetValue(4);
                         recipeList.Add(recipe);
                         recipe = new RecipeCardModels();
                     }
@@ -51,9 +52,8 @@ namespace RecipeBookAPI.DBAcces
         public OneRecipeModels Recipe(int Dish_ID)
         {
             OneRecipeModels recipe = new OneRecipeModels();
-            
+            recipe.productAndWeight = new List<Tuple<string, string>>();
             string sqlExpression = "OneRecipe";
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -72,14 +72,14 @@ namespace RecipeBookAPI.DBAcces
                     {
                         recipe.DishID = (int)reader.GetValue(0);
                         recipe.RecipeName = (string)reader.GetValue(1);
-                        recipe.Product.Add((string)reader.GetValue(2));
-                        recipe.WeightProduct = (int)reader.GetValue(3);
+                        recipe.productAndWeight.Add(Tuple.Create((string)reader.GetValue(2), (string)reader.GetValue(3)));
                         recipe.Category = (string)reader.GetValue(4);
                         recipe.CookingTime = (string)reader.GetValue(5);
                         recipe.CookingTemperature = (string)reader.GetValue(6);
                         recipe.CookingProcess = (string)reader.GetValue(7);
                         recipe.PPhotoRecipe = (string)reader.GetValue(8);
                         recipe.RecipeDescription = (string)reader.GetValue(9);
+                        
                     }
                     reader.Close();
                 }
@@ -109,6 +109,7 @@ namespace RecipeBookAPI.DBAcces
                         Recipe.Category = (string)reader.GetValue(1);
                         Recipe.PPhotoRecipe = (string)reader.GetValue(2);
                         Recipe.RecipeDescription = (string)reader.GetValue(3);
+                        Recipe.dishID = (int)reader.GetValue(4);
                         RecipeList.Add(Recipe);
                         Recipe = new RecipeCardModels();
                     }
@@ -131,7 +132,7 @@ namespace RecipeBookAPI.DBAcces
             List<RecipeCardModels> RecipeList = new List<RecipeCardModels>();
             RecipeCardModels Recipe = new RecipeCardModels();
             
-            string sqlExpression = "SearchByRN";
+            string sqlExpression = "SearchByDish";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -152,6 +153,7 @@ namespace RecipeBookAPI.DBAcces
                         Recipe.Category = (string)reader.GetValue(1);
                         Recipe.PPhotoRecipe = (string)reader.GetValue(2);
                         Recipe.RecipeDescription = (string)reader.GetValue(3);
+                        Recipe.dishID = (int)reader.GetValue(4);
                         RecipeList.Add(Recipe);
                         Recipe = new RecipeCardModels();
                     }
@@ -169,6 +171,79 @@ namespace RecipeBookAPI.DBAcces
             return RecipeList;
         }
 
+        public List<RecipeCardModels> SearchByCategory(int category)
+        {
+            List<RecipeCardModels> RecipeList = new List<RecipeCardModels>();
+            RecipeCardModels Recipe = new RecipeCardModels();
+
+            string sqlExpression = "SearchByCategory";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlParameter nameParam = new SqlParameter
+                {
+                    ParameterName = "@category",
+                    Value = category
+                };
+                command.Parameters.Add(nameParam);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Recipe.RecipeName = (string)reader.GetValue(0);
+                        Recipe.Category = (string)reader.GetValue(1);
+                        Recipe.PPhotoRecipe = (string)reader.GetValue(2);
+                        Recipe.RecipeDescription = (string)reader.GetValue(3);
+                        Recipe.dishID = (int)reader.GetValue(4);
+                        RecipeList.Add(Recipe);
+                        Recipe = new RecipeCardModels();
+                    }
+                    reader.Close();
+                }
+                else
+                {
+                    Recipe.RecipeName = null;
+                    Recipe.Category = null;
+                    Recipe.PPhotoRecipe = null;
+                    Recipe.RecipeDescription = null;
+                    RecipeList.Add(Recipe);
+                }
+            }
+            return RecipeList;
+        }
+
+        public List<CategoryList> CategoryLists()
+        {
+            List<CategoryList> response = new List<CategoryList>();
+            CategoryList res = new CategoryList();
+
+            string sqlExpression = "CategoryList";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        res.cateheryID = ((int)reader.GetValue(0));
+                        res.categoryName = ((string)reader.GetValue(1));
+                        response.Add(res);
+                        res = new CategoryList();
+                    }
+                }
+                else
+                {
+                    return response;
+                }
+            }
+            return response;
+        }
+     
         //End Get Metods
 
         //Post Metods
