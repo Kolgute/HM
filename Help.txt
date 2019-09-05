@@ -11,3 +11,11 @@ git push -u origin master
 
  git remote add origin https://github.com/Kolgute/HM.git
 git push -u origin master
+
+
+git config --global user.name ""
+git config --global user.emale 
+git clone git://github.com/schacon/grit.git
+git checkout -b iss53 - создать ветку и перейти в неё
+git checkout master
+git merge iss53
